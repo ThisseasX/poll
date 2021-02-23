@@ -65,7 +65,7 @@ const DisplayPoll = ({
           title="Copied to clipboard"
         >
           <CopyToClipboard
-            text={`${window.location.hostname}/${pollId}`}
+            text={`https://${window.location.hostname}/${pollId}`}
             onCopy={() => {
               copyToClipboard();
             }}
