@@ -1,14 +1,14 @@
 import { combineEpics } from 'redux-observable';
+import { appEpics } from 'models/app';
+import { uiEpics } from 'models/ui';
 import { candidatesEpics } from 'models/candidates';
 import { votesEpics } from 'models/votes';
-import { uiEpics } from 'models/ui';
-import { appEpics } from 'models/app';
 
 const rootEpic = combineEpics(
+  appEpics,
+  uiEpics,
   candidatesEpics,
   votesEpics,
-  uiEpics,
-  appEpics,
 );
 
 export default rootEpic;

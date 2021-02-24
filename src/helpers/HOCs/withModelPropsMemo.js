@@ -11,7 +11,7 @@ const withModelPropsMemo = (
   const actionProps = pickBy(isAction, props);
   const stateProps = pickBy(negate(isAction), props);
 
-  const mapStateToProps = selectorCreators
+  const makeMapStateToProps = selectorCreators
     ? () => {
         const selectors = mapValues(callSelf, selectorCreators);
 
@@ -24,7 +24,7 @@ const withModelPropsMemo = (
     : // Default behaviour
       state => mapValues(selector => selector(state), stateProps);
 
-  return connect(mapStateToProps, actionProps)(WrappedComponent);
+  return connect(makeMapStateToProps, actionProps)(WrappedComponent);
 };
 
 export { withModelPropsMemo };

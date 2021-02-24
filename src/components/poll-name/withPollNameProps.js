@@ -3,7 +3,7 @@ import { useState, useCallback } from 'react';
 const withPollNameProps = WrappedComponent => props => {
   const [isEditing, setIsEditing] = useState(false);
 
-  const handleEdit = useCallback(e => {
+  const handleEdit = useCallback(() => {
     setIsEditing(true);
   }, []);
 

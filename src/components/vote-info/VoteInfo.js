@@ -1,4 +1,5 @@
 import { memo } from 'react';
+import { compose } from 'helpers';
 
 import {
   Box,
@@ -15,7 +16,6 @@ import {
 } from '@material-ui/icons';
 
 import { styles } from './styles';
-import { compose } from 'redux';
 
 const VoteInfo = ({ classes, anchorEl, onClose }) => (
   <Popover

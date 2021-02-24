@@ -14,7 +14,6 @@ import { styles } from './styles';
 
 const ChangeSubject = ({
   classes,
-  handleEditEnd,
   input,
   handleInput,
   handleKeyDown,

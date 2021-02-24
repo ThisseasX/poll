@@ -9,7 +9,7 @@ const PollSubject = ({
   handleEditStart,
   handleEditEnd,
 }) => (
-  <Box component={Paper} mt={3} p={3} pr={1}> 
+  <Box component={Paper} mt={3} p={3} pr={1}>
     {isEditingSubject ? (
       <ChangeSubject handleEditEnd={handleEditEnd} />
     ) : (

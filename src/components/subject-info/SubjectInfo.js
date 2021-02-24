@@ -1,4 +1,5 @@
 import { memo } from 'react';
+import { compose } from 'helpers';
 
 import {
   Box,
@@ -10,7 +11,6 @@ import {
 
 import { Close, Edit } from '@material-ui/icons';
 import { styles } from './styles';
-import { compose } from 'redux';
 
 const SubjectInfo = ({ classes, anchorEl, onClose }) => (
   <Popover

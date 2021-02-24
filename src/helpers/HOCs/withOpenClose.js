@@ -3,7 +3,7 @@ import { useState, useCallback } from 'react';
 const withOpenClose = WrappedComponent => props => {
   const [isOpen, setIsOpen] = useState(false);
 
-  const handleOpen = useCallback(event => {
+  const handleOpen = useCallback(() => {
     setIsOpen(true);
   }, []);
 
