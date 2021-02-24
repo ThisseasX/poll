@@ -1,11 +1,4 @@
-import {
-  mergeMap,
-  ignoreElements,
-  withLatestFrom,
-} from 'rxjs/operators';
-
-import { combineEpics, ofType } from 'redux-observable';
-import { spread } from 'lodash/fp';
+import { combineEpics } from 'redux-observable';
 
 import {
   addCandidateEffect,
@@ -16,22 +9,11 @@ import {
   addCandidateRequest,
   removeCandidateRequest,
 } from 'services';
+import {makeRequest} from 'helpers';
 
-const addCandidateEffectEpic = (action$, state$) =>
-  action$.pipe(
-    ofType(addCandidateEffect),
-    withLatestFrom(state$),
-    mergeMap(spread(addCandidateRequest)),
-    ignoreElements(),
-  );
+const addCandidateEffectEpic = makeRequest(addCandidateEffect, addCandidateRequest)
 
-const removeCandidateEffectEpic = (action$, state$) =>
-  action$.pipe(
-    ofType(removeCandidateEffect),
-    withLatestFrom(state$),
-    mergeMap(spread(removeCandidateRequest)),
-    ignoreElements(),
-  );
+const removeCandidateEffectEpic = makeRequest(removeCandidateEffect, removeCandidateRequest)
 
 const candidatesEpics = combineEpics(
   addCandidateEffectEpic,
