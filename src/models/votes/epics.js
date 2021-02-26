@@ -1,30 +1,17 @@
-import { spread } from 'lodash/fp';
-
-import {
-  mergeMap,
-  withLatestFrom,
-  ignoreElements,
-} from 'rxjs/operators';
-
-import { ofType, combineEpics } from 'redux-observable';
+import { combineEpics } from 'redux-observable';
+import { makeRequestEpic } from 'helpers';
 import { toggleVoteEffect, resetVotesEffect } from 'models/votes';
 import { toggleVoteRequest, resetVotesRequest } from 'services';
 
-const toggleVoteEffectEpic = (action$, state$) =>
-  action$.pipe(
-    ofType(toggleVoteEffect),
-    withLatestFrom(state$),
-    mergeMap(spread(toggleVoteRequest)),
-    ignoreElements(),
-  );
+const toggleVoteEffectEpic = makeRequestEpic(
+  toggleVoteEffect,
+  toggleVoteRequest,
+);
 
-const resetVotesEffectEpic = (action$, state$) =>
-  action$.pipe(
-    ofType(resetVotesEffect),
-    withLatestFrom(state$),
-    mergeMap(spread(resetVotesRequest)),
-    ignoreElements(),
-  );
+const resetVotesEffectEpic = makeRequestEpic(
+  resetVotesEffect,
+  resetVotesRequest,
+);
 
 const votesEpics = combineEpics(
   toggleVoteEffectEpic,

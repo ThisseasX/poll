@@ -1,22 +1,12 @@
-import { spread } from 'lodash';
-
-import {
-  mergeMap,
-  withLatestFrom,
-  ignoreElements,
-} from 'rxjs/operators';
-
-import { ofType, combineEpics } from 'redux-observable';
+import { combineEpics } from 'redux-observable';
+import { makeRequestEpic } from 'helpers';
 import { setPollSubjectEffect } from 'models/app';
 import { setPollSubjectRequest } from 'services';
 
-const setPollSubjectEffectEpic = (action$, state$) =>
-  action$.pipe(
-    ofType(setPollSubjectEffect),
-    withLatestFrom(state$),
-    mergeMap(spread(setPollSubjectRequest)),
-    ignoreElements(),
-  );
+const setPollSubjectEffectEpic = makeRequestEpic(
+  setPollSubjectEffect,
+  setPollSubjectRequest,
+);
 
 const appEpics = combineEpics(setPollSubjectEffectEpic);
 
