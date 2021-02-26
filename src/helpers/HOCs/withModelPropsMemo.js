@@ -4,6 +4,10 @@ import { has, pickBy, negate, mapValues } from 'lodash/fp';
 const isAction = has('type');
 const callSelf = fn => fn();
 
+/*
+  - Creates a mapStateToProps for EACH instance of the connected component
+  - Takes the connected component's props into account for re-rendering when they have changed
+*/
 const withModelPropsMemo = (
   props,
   selectorCreators,
