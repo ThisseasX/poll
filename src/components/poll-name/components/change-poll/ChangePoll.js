@@ -21,6 +21,7 @@ const ChangePoll = ({
 }) => (
   <Box display={'flex'} pr={2}>
     <TextField
+      autoFocus
       label={'Poll ID'}
       variant={'outlined'}
       onChange={handleInput}

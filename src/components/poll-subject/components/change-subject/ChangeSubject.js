@@ -21,6 +21,7 @@ const ChangeSubject = ({
 }) => (
   <Box display={'flex'} pr={2}>
     <TextField
+      autoFocus
       label={'What should we vote for?'}
       variant={'outlined'}
       onChange={handleInput}
