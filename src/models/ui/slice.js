@@ -12,8 +12,11 @@ const reducers = {
   endCall: (state, { payload }) => {
     state.loadingCalls[payload] = false;
   },
-  setIsClipboardTooltipOpen: (state, { payload }) => {
-    state.isClipboardTooltipOpen = payload;
+  openClipboardTooltip: state => {
+    state.isClipboardTooltipOpen = true;
+  },
+  closeClipboardTooltip: state => {
+    state.isClipboardTooltipOpen = false;
   },
 };
 

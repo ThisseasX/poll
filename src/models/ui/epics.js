@@ -1,10 +1,18 @@
 import { timer } from 'rxjs';
-import { switchMap, mapTo, startWith } from 'rxjs/operators';
+
+import {
+  switchMap,
+  mapTo,
+  startWith,
+  takeUntil,
+} from 'rxjs/operators';
+
 import { ofType, combineEpics } from 'redux-observable';
 
 import {
   copyToClipboard,
-  setIsClipboardTooltipOpen,
+  openClipboardTooltip,
+  closeClipboardTooltip,
 } from 'models/ui';
 
 const copyToClipboardEpic = action$ =>
@@ -12,8 +20,9 @@ const copyToClipboardEpic = action$ =>
     ofType(copyToClipboard),
     switchMap(() =>
       timer(1000).pipe(
-        mapTo(setIsClipboardTooltipOpen(false)),
-        startWith(setIsClipboardTooltipOpen(true)),
+        mapTo(closeClipboardTooltip()),
+        startWith(openClipboardTooltip()),
+        takeUntil(action$.pipe(ofType(closeClipboardTooltip))),
       ),
     ),
   );

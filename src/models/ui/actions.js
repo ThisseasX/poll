@@ -4,7 +4,8 @@ import { uiSlice } from './slice';
 const {
   startCall,
   endCall,
-  setIsClipboardTooltipOpen,
+  openClipboardTooltip,
+  closeClipboardTooltip,
 } = uiSlice.actions;
 
 const createNamespacedAction = namespaceActionCreator('ui');
@@ -14,6 +15,7 @@ const copyToClipboard = createNamespacedAction('copyToClipboard');
 export {
   startCall,
   endCall,
-  setIsClipboardTooltipOpen,
+  openClipboardTooltip,
+  closeClipboardTooltip,
   copyToClipboard,
 };

@@ -18,7 +18,7 @@ import { pollId } from 'models/app';
 import {
   copyToClipboard,
   isClipboardTooltipOpen,
-  setIsClipboardTooltipOpen,
+  closeClipboardTooltip,
 } from 'models/ui';
 
 import { styles } from './styles';
@@ -32,7 +32,7 @@ const DisplayPoll = ({
   pollId,
   copyToClipboard,
   isClipboardTooltipOpen,
-  setIsClipboardTooltipOpen,
+  closeClipboardTooltip,
 }) => (
   <Box display={'flex'}>
     <Box flex={1}>
@@ -47,40 +47,36 @@ const DisplayPoll = ({
 
     <ClickAwayListener
       onClickAway={() => {
-        setIsClipboardTooltipOpen(false);
+        if (isClipboardTooltipOpen) {
+          closeClipboardTooltip();
+        }
       }}
     >
-      <div>
-        <Tooltip
-          PopperProps={{
-            disablePortal: true,
+      <Tooltip
+        onClose={() => {
+          closeClipboardTooltip();
+        }}
+        open={isClipboardTooltipOpen}
+        disableFocusListener
+        disableHoverListener
+        disableTouchListener
+        title="Copied to clipboard"
+      >
+        <CopyToClipboard
+          text={`https://${window.location.hostname}/${pollId}`}
+          onCopy={() => {
+            copyToClipboard();
           }}
-          onClose={() => {
-            setIsClipboardTooltipOpen(false);
-          }}
-          open={isClipboardTooltipOpen}
-          disableFocusListener
-          disableHoverListener
-          disableTouchListener
-          title="Copied to clipboard"
         >
-          <CopyToClipboard
-            text={`https://${window.location.hostname}/${pollId}`}
-            onCopy={() => {
-              copyToClipboard();
-            }}
+          <IconButton
+            variant={'contained'}
+            color={'primary'}
+            className={classes.button}
           >
-            <IconButton
-              variant={'contained'}
-              color={'primary'}
-              className={classes.button}
-              alt={'move'}
-            >
-              <FileCopy color={'primary'} />
-            </IconButton>
-          </CopyToClipboard>
-        </Tooltip>
-      </div>
+            <FileCopy color={'primary'} />
+          </IconButton>
+        </CopyToClipboard>
+      </Tooltip>
     </ClickAwayListener>
 
     <IconButton
@@ -113,7 +109,7 @@ export default compose(
     pollId,
     copyToClipboard,
     isClipboardTooltipOpen,
-    setIsClipboardTooltipOpen,
+    closeClipboardTooltip,
   }),
   withPopoverProps,
   memo,
