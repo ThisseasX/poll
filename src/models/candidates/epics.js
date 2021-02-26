@@ -1,5 +1,5 @@
 import { combineEpics } from 'redux-observable';
-import { makeRequest } from 'helpers';
+import { makeRequestEpic } from 'helpers';
 
 import {
   addCandidateEffect,
@@ -11,12 +11,12 @@ import {
   removeCandidateRequest,
 } from 'services';
 
-const addCandidateEffectEpic = makeRequest(
+const addCandidateEffectEpic = makeRequestEpic(
   addCandidateEffect,
   addCandidateRequest,
 );
 
-const removeCandidateEffectEpic = makeRequest(
+const removeCandidateEffectEpic = makeRequestEpic(
   removeCandidateEffect,
   removeCandidateRequest,
 );

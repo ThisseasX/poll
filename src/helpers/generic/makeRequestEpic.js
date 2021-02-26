@@ -7,7 +7,7 @@ import {
   withLatestFrom,
 } from 'rxjs/operators';
 
-const makeRequest = (actionType, actionRequestCallback) => (
+const makeRequestEpic = (actionType, actionRequestCallback) => (
   action$,
   state$,
 ) =>
@@ -18,4 +18,4 @@ const makeRequest = (actionType, actionRequestCallback) => (
     ignoreElements(),
   );
 
-export { makeRequest };
+export { makeRequestEpic };

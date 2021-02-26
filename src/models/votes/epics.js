@@ -1,14 +1,14 @@
 import { combineEpics } from 'redux-observable';
-import { makeRequest } from 'helpers';
+import { makeRequestEpic } from 'helpers';
 import { toggleVoteEffect, resetVotesEffect } from 'models/votes';
 import { toggleVoteRequest, resetVotesRequest } from 'services';
 
-const toggleVoteEffectEpic = makeRequest(
+const toggleVoteEffectEpic = makeRequestEpic(
   toggleVoteEffect,
   toggleVoteRequest,
 );
 
-const resetVotesEffectEpic = makeRequest(
+const resetVotesEffectEpic = makeRequestEpic(
   resetVotesEffect,
   resetVotesRequest,
 );
