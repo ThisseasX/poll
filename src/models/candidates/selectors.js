@@ -8,11 +8,13 @@ const selectors = candidatesAdapter.getSelectors(
   state => state.candidates,
 );
 
-const candidateById = selectors.selectById;
-const allCandidates = selectors.selectAll;
-const allCandidatesEntities = selectors.selectEntities;
-const allCandidatesIds = selectors.selectIds;
-const allCandidatesCount = selectors.selectTotal;
+const {
+  selectById: candidateById,
+  selectAll: allCandidates,
+  selectEntities: allCandidatesEntities,
+  selectIds: allCandidatesIds,
+  selectTotal: allCandidatesCount,
+} = selectors;
 
 const candidatesWithVotes = createSelector(
   [allCandidates, voteCountByCandidate],

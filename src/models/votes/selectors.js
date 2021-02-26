@@ -13,11 +13,13 @@ import { votesAdapter } from './adapter';
 
 const selectors = votesAdapter.getSelectors(state => state.votes);
 
-const voteById = selectors.selectById;
-const allVotes = selectors.selectAll;
-const allVotesEntities = selectors.selectEntities;
-const allVotesIds = selectors.selectIds;
-const allVotesCount = selectors.selectTotal;
+const {
+  selectById: voteById,
+  selectAll: allVotes,
+  selectEntities: allVotesEntities,
+  selectIds: allVotesIds,
+  selectTotal: allVotesCount,
+} = selectors;
 
 const votesByCandidate = createSelector(allVotes, votes =>
   groupBy('candidateId', votes),
