@@ -1,4 +1,4 @@
-import { configureStore } from '@reduxjs/toolkit';
+import { configureStore } from '@reduxjs/toolkit'; //DISCUSS: instead of createStore
 import { createEpicMiddleware } from 'redux-observable';
 import rootReducer from './rootReducer';
 import rootEpic from './rootEpic';
