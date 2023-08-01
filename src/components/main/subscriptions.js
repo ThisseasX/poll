@@ -1,4 +1,4 @@
-import firebase from 'firebase';
+import firebase from 'firebase/app';
 import * as candidatesActions from 'models/candidates/actions';
 import * as votesActions from 'models/votes/actions';
 import * as appActions from 'models/app/actions';
