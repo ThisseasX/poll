@@ -1,11 +1,8 @@
 import { useCallback } from 'react';
 
 const withCandidateActionProps = WrappedComponent => props => {
-  const {
-    candidateId,
-    toggleVoteEffect,
-    removeCandidateEffect,
-  } = props;
+  const { candidateId, toggleVoteEffect, removeCandidateEffect } =
+    props;
 
   const handleToggleVote = useCallback(() => {
     toggleVoteEffect(candidateId);

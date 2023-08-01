@@ -6,10 +6,10 @@ const snapToEntity = snap => ({ id: snap.key, ...snap.val() });
 
 const snapToKey = snap => snap.key;
 
-const dispatchTransformedSnap = (
-  boundAction,
-  transformSnap = identity,
-) => snap => flow(transformSnap, boundAction)(snap);
+const dispatchTransformedSnap =
+  (boundAction, transformSnap = identity) =>
+  snap =>
+    flow(transformSnap, boundAction)(snap);
 
 export {
   snapToValue,
