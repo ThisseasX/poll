@@ -28,6 +28,9 @@ const ChangePoll = ({
       onKeyDown={handleKeyDown}
       value={input}
       className={classes.input}
+      inputProps={{
+        enterKeyHint: 'go',
+      }}
     />
 
     <Button

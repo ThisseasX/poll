@@ -34,6 +34,9 @@ const CandidateInput = ({
         onChange={handleInput}
         onKeyDown={handleKeyDown}
         value={input}
+        inputProps={{
+          enterKeyHint: 'done',
+        }}
       />
 
       {input && (

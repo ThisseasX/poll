@@ -28,6 +28,9 @@ const ChangeSubject = ({
       onKeyDown={handleKeyDown}
       value={input}
       className={classes.input}
+      inputProps={{
+        enterKeyHint: 'done',
+      }}
     />
 
     <Button
