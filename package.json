@@ -21,6 +21,9 @@
     "redux-observable": "^1.2.0",
     "rxjs": "^6.6.3"
   },
+  "devDependencies": {
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11"
+  },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
