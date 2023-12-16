@@ -6,10 +6,12 @@ import {
   Popover,
   Typography,
   IconButton,
+  Tooltip,
   withStyles,
 } from '@material-ui/core';
 
-import { Close, Edit, FileCopy } from '@material-ui/icons';
+import { Close, Edit, FileCopy, Link } from '@material-ui/icons';
+import QRCode from 'react-qr-code';
 import { styles } from './styles';
 
 const PollInfo = ({ classes, anchorEl, onClose }) => (
@@ -29,9 +31,23 @@ const PollInfo = ({ classes, anchorEl, onClose }) => (
     >
       <Typography variant={'h6'}>Info</Typography>
 
-      <IconButton color={'primary'} onClick={onClose}>
-        <Close color={'primary'} className={classes.closeIcon} />
-      </IconButton>
+      <Box display={'flex'}>
+        <Tooltip
+          title={<QRCode value={window.location.href} />}
+          placement="bottom-end"
+          classes={{
+            tooltip: classes.tooltip,
+          }}
+        >
+          <IconButton color={'primary'}>
+            <Link color={'primary'} className={classes.closeIcon} />
+          </IconButton>
+        </Tooltip>
+
+        <IconButton color={'primary'} onClick={onClose}>
+          <Close color={'primary'} className={classes.closeIcon} />
+        </IconButton>
+      </Box>
     </Box>
 
     <Box p={2} style={{ maxWidth: '396px' }}>
