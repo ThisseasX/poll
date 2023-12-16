@@ -20,6 +20,7 @@ const CandidateInput = ({
   input,
   handleInput,
   handleAdd,
+  handlePaste,
   handleKeyDown,
   anchorEl,
   handlePopoverOpen,
@@ -34,6 +35,7 @@ const CandidateInput = ({
         onChange={handleInput}
         onKeyDown={handleKeyDown}
         value={input}
+        onPaste={handlePaste}
         inputProps={{
           enterKeyHint: 'done',
         }}
